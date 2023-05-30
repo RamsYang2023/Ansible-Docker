@@ -1,0 +1,10 @@
+---
+- name: docker container management
+  hosts: host1
+  remote_user: hliang
+  become: true
+  
+  tasks:
+    - name: Start a docker container
+      command: docker start testjavac1
+      
