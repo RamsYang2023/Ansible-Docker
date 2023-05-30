@@ -1,0 +1,24 @@
+---
+- name: Setup MySQL container and Apache container
+  hosts: host1
+  remote_user: hliang    # or root
+  become: true
+  
+  tasks:
+    - name: Download Docker image for mysql
+      command: docker pull mysql:latest  # or a specifical TAG.
+      
+    - name: Create a mysql container
+      command: docker run -d --name landy-MySQL -p 3306:3306 -e MYSQL_ROOT_PASSWORD=******* mysql:latest
+    
+    # if need shut down the mysql container, uncommon the follow two lines of scripts.
+    #- name: shut down mysql container
+    #  command: docker stop landy-MySQL
+    
+    - name: Download Docker image for Apache
+      command: docker run -d --name landy-Apache -p 80:80 httpd:latest
+      
+    # if need shut down the mysql container, uncommon the follow two lines of scripts.
+    #- name: shut down Apache container
+    #  command: docker stop landy-Apache
+   
