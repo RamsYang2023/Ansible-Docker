@@ -1,0 +1,8 @@
+- name: docker container management
+  hosts: host1
+  remote_user: hliang
+  become: true
+  
+  tasks:
+    - name: Stop a docker container
+      command: docker stop testjavac1
